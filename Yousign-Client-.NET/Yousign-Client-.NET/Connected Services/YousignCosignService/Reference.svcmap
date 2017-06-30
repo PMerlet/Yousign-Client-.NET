@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d93ef56f-fbde-4ad4-ba27-43d7b11aee71" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://apidemo.yousign.fr:8181/CosignWS/CosignWS?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CosignWS.wsdl" MetadataType="Wsdl" ID="f6f59676-40f1-4355-9615-b245739c7027" SourceId="1" SourceUrl="https://apidemo.yousign.fr:8181/CosignWS/CosignWS?wsdl" />
+    <MetadataFile FileName="CosignWS.xsd" MetadataType="Schema" ID="a67be812-1b86-4955-a00b-d5fb9f198688" SourceId="1" SourceUrl="https://apidemo.yousign.fr:8181/CosignWS/CosignWS?xsd=1" />
+    <MetadataFile FileName="xmlmime.xsd" MetadataType="Schema" ID="dc238a63-46ab-41af-ad91-f451af815e12" SourceId="1" SourceUrl="http://www.w3.org/2005/05/xmlmime.xsd" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

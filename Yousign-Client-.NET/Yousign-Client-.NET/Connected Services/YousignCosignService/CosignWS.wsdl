@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://www.yousign.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="CosignWS" targetNamespace="http://www.yousign.com" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="CosignWSPortBinding_MTOM_Policy-CosignWSPortBinding_MTOM_Policy">
+    <ns1:OptimizedMimeSerialization xmlns:ns1="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" wsp:Optional="true" />
+  </wsp:Policy>
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://apidemo.yousign.fr:8181/CosignWS/CosignWS?xsd=1" namespace="http://www.yousign.com" />
+    </xsd:schema>
+  </types>
+  <message name="getInfosFromCosignatureDemand">
+    <part name="parameters" element="tns:getInfosFromCosignatureDemand" />
+  </message>
+  <message name="getInfosFromCosignatureDemandResponse">
+    <part name="parameters" element="tns:getInfosFromCosignatureDemandResponse" />
+  </message>
+  <message name="YousignException">
+    <part name="fault" element="tns:YousignException" />
+  </message>
+  <message name="getCosignedFilesFromDemand">
+    <part name="parameters" element="tns:getCosignedFilesFromDemand" />
+  </message>
+  <message name="getCosignedFilesFromDemandResponse">
+    <part name="parameters" element="tns:getCosignedFilesFromDemandResponse" />
+  </message>
+  <message name="alertCosigners">
+    <part name="parameters" element="tns:alertCosigners" />
+  </message>
+  <message name="alertCosignersResponse">
+    <part name="parameters" element="tns:alertCosignersResponse" />
+  </message>
+  <message name="cancelCosignatureDemand">
+    <part name="parameters" element="tns:cancelCosignatureDemand" />
+  </message>
+  <message name="cancelCosignatureDemandResponse">
+    <part name="parameters" element="tns:cancelCosignatureDemandResponse" />
+  </message>
+  <message name="isPDFSignable">
+    <part name="parameters" element="tns:isPDFSignable" />
+  </message>
+  <message name="isPDFSignableResponse">
+    <part name="parameters" element="tns:isPDFSignableResponse" />
+  </message>
+  <message name="updateCosigner">
+    <part name="parameters" element="tns:updateCosigner" />
+  </message>
+  <message name="updateCosignerResponse">
+    <part name="parameters" element="tns:updateCosignerResponse" />
+  </message>
+  <message name="addFile">
+    <part name="parameters" element="tns:addFile" />
+  </message>
+  <message name="addFileResponse">
+    <part name="parameters" element="tns:addFileResponse" />
+  </message>
+  <message name="addTextToWrite">
+    <part name="parameters" element="tns:addTextToWrite" />
+  </message>
+  <message name="addTextToWriteResponse">
+    <part name="parameters" element="tns:addTextToWriteResponse" />
+  </message>
+  <message name="getListCosign">
+    <part name="parameters" element="tns:getListCosign" />
+  </message>
+  <message name="getListCosignResponse">
+    <part name="parameters" element="tns:getListCosignResponse" />
+  </message>
+  <message name="initCosign">
+    <part name="parameters" element="tns:initCosign" />
+  </message>
+  <message name="initCosignResponse">
+    <part name="parameters" element="tns:initCosignResponse" />
+  </message>
+  <message name="confirmCosign">
+    <part name="parameters" element="tns:confirmCosign" />
+  </message>
+  <message name="confirmCosignResponse">
+    <part name="parameters" element="tns:confirmCosignResponse" />
+  </message>
+  <message name="cosign">
+    <part name="parameters" element="tns:cosign" />
+  </message>
+  <message name="cosignResponse">
+    <part name="parameters" element="tns:cosignResponse" />
+  </message>
+  <portType name="CosignWS">
+    <operation name="getInfosFromCosignatureDemand">
+      <input wsam:Action="http://www.yousign.com/CosignWS/getInfosFromCosignatureDemandRequest" message="tns:getInfosFromCosignatureDemand" />
+      <output wsam:Action="http://www.yousign.com/CosignWS/getInfosFromCosignatureDemandResponse" message="tns:getInfosFromCosignatureDemandResponse" />
+      <fault wsam:Action="http://www.yousign.com/CosignWS/getInfosFromCosignatureDemand/Fault/YousignException" name="YousignException" message="tns:YousignException" />
+    </operation>
+    <operation name="getCosignedFilesFromDemand">
+      <input wsam:Action="http://www.yousign.com/CosignWS/getCosignedFilesFromDemandRequest" message="tns:getCosignedFilesFromDemand" />
+      <output wsam:Action="http://www.yousign.com/CosignWS/getCosignedFilesFromDemandResponse" message="tns:getCosignedFilesFromDemandResponse" />
+      <fault wsam:Action="http://www.yousign.com/CosignWS/getCosignedFilesFromDemand/Fault/YousignException" name="YousignException" message="tns:YousignException" />
+    </operation>
+    <operation name="alertCosigners">
+      <input wsam:Action="http://www.yousign.com/CosignWS/alertCosignersRequest" message="tns:alertCosigners" />
+      <output wsam:Action="http://www.yousign.com/CosignWS/alertCosignersResponse" message="tns:alertCosignersResponse" />
+      <fault wsam:Action="http://www.yousign.com/CosignWS/alertCosigners/Fault/YousignException" name="YousignException" message="tns:YousignException" />
+    </operation>
+    <operation name="cancelCosignatureDemand">
+      <input wsam:Action="http://www.yousign.com/CosignWS/cancelCosignatureDemandRequest" message="tns:cancelCosignatureDemand" />
+      <output wsam:Action="http://www.yousign.com/CosignWS/cancelCosignatureDemandResponse" message="tns:cancelCosignatureDemandResponse" />
+      <fault wsam:Action="http://www.yousign.com/CosignWS/cancelCosignatureDemand/Fault/YousignException" name="YousignException" message="tns:YousignException" />
+    </operation>
+    <operation name="isPDFSignable">
+      <input wsam:Action="http://www.yousign.com/CosignWS/isPDFSignableRequest" message="tns:isPDFSignable" />
+      <output wsam:Action="http://www.yousign.com/CosignWS/isPDFSignableResponse" message="tns:isPDFSignableResponse" />
+      <fault wsam:Action="http://www.yousign.com/CosignWS/isPDFSignable/Fault/YousignException" name="YousignException" message="tns:YousignException" />
+    </operation>
+    <operation name="updateCosigner">
+      <input wsam:Action="http://www.yousign.com/CosignWS/updateCosignerRequest" message="tns:updateCosigner" />
+      <output wsam:Action="http://www.yousign.com/CosignWS/updateCosignerResponse" message="tns:updateCosignerResponse" />
+      <fault wsam:Action="http://www.yousign.com/CosignWS/updateCosigner/Fault/YousignException" name="YousignException" message="tns:YousignException" />
+    </operation>
+    <operation name="addFile">
+      <input wsam:Action="http://www.yousign.com/CosignWS/addFileRequest" message="tns:addFile" />
+      <output wsam:Action="http://www.yousign.com/CosignWS/addFileResponse" message="tns:addFileResponse" />
+      <fault wsam:Action="http://www.yousign.com/CosignWS/addFile/Fault/YousignException" name="YousignException" message="tns:YousignException" />
+    </operation>
+    <operation name="addTextToWrite">
+      <input wsam:Action="http://www.yousign.com/CosignWS/addTextToWriteRequest" message="tns:addTextToWrite" />
+      <output wsam:Action="http://www.yousign.com/CosignWS/addTextToWriteResponse" message="tns:addTextToWriteResponse" />
+      <fault wsam:Action="http://www.yousign.com/CosignWS/addTextToWrite/Fault/YousignException" name="YousignException" message="tns:YousignException" />
+    </operation>
+    <operation name="getListCosign">
+      <input wsam:Action="http://www.yousign.com/CosignWS/getListCosignRequest" message="tns:getListCosign" />
+      <output wsam:Action="http://www.yousign.com/CosignWS/getListCosignResponse" message="tns:getListCosignResponse" />
+      <fault wsam:Action="http://www.yousign.com/CosignWS/getListCosign/Fault/YousignException" name="YousignException" message="tns:YousignException" />
+    </operation>
+    <operation name="initCosign">
+      <input wsam:Action="http://www.yousign.com/CosignWS/initCosignRequest" message="tns:initCosign" />
+      <output wsam:Action="http://www.yousign.com/CosignWS/initCosignResponse" message="tns:initCosignResponse" />
+      <fault wsam:Action="http://www.yousign.com/CosignWS/initCosign/Fault/YousignException" name="YousignException" message="tns:YousignException" />
+    </operation>
+    <operation name="confirmCosign">
+      <input wsam:Action="http://www.yousign.com/CosignWS/confirmCosignRequest" message="tns:confirmCosign" />
+      <output wsam:Action="http://www.yousign.com/CosignWS/confirmCosignResponse" message="tns:confirmCosignResponse" />
+      <fault wsam:Action="http://www.yousign.com/CosignWS/confirmCosign/Fault/YousignException" name="YousignException" message="tns:YousignException" />
+    </operation>
+    <operation name="cosign">
+      <input wsam:Action="http://www.yousign.com/CosignWS/cosignRequest" message="tns:cosign" />
+      <output wsam:Action="http://www.yousign.com/CosignWS/cosignResponse" message="tns:cosignResponse" />
+      <fault wsam:Action="http://www.yousign.com/CosignWS/cosign/Fault/YousignException" name="YousignException" message="tns:YousignException" />
+    </operation>
+  </portType>
+  <binding name="CosignWSPortBinding" type="tns:CosignWS">
+    <wsp:PolicyReference URI="#CosignWSPortBinding_MTOM_Policy-CosignWSPortBinding_MTOM_Policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getInfosFromCosignatureDemand">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="YousignException">
+        <soap:fault use="literal" name="YousignException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getCosignedFilesFromDemand">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="YousignException">
+        <soap:fault use="literal" name="YousignException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="alertCosigners">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="YousignException">
+        <soap:fault use="literal" name="YousignException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="cancelCosignatureDemand">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="YousignException">
+        <soap:fault use="literal" name="YousignException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="isPDFSignable">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="YousignException">
+        <soap:fault use="literal" name="YousignException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="updateCosigner">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="YousignException">
+        <soap:fault use="literal" name="YousignException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="addFile">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="YousignException">
+        <soap:fault use="literal" name="YousignException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="addTextToWrite">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="YousignException">
+        <soap:fault use="literal" name="YousignException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getListCosign">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="YousignException">
+        <soap:fault use="literal" name="YousignException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="initCosign">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="YousignException">
+        <soap:fault use="literal" name="YousignException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="confirmCosign">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="YousignException">
+        <soap:fault use="literal" name="YousignException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="cosign">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="YousignException">
+        <soap:fault use="literal" name="YousignException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="CosignWS">
+    <port name="CosignWSPort" binding="tns:CosignWSPortBinding">
+      <soap:address location="https://apidemo.yousign.fr:8181/CosignWS/CosignWS" />
+    </port>
+  </service>
+</definitions>

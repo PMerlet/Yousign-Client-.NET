@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns="http://www.yousign.com" targetNamespace="http://www.yousign.com" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://www.w3.org/2005/05/xmlmime" namespace="http://www.w3.org/2005/05/xmlmime" />
+  <xs:element name="YousignException" type="tns:YousignException" />
+  <xs:element name="addFile" type="tns:addFile" />
+  <xs:element name="addFileResponse" type="tns:addFileResponse" />
+  <xs:element name="addTextToWrite" type="tns:addTextToWrite" />
+  <xs:element name="addTextToWriteResponse" type="tns:addTextToWriteResponse" />
+  <xs:element name="alertCosigners" type="tns:alertCosigners" />
+  <xs:element name="alertCosignersResponse" type="tns:alertCosignersResponse" />
+  <xs:element name="cancelCosignatureDemand" type="tns:cancelCosignatureDemand" />
+  <xs:element name="cancelCosignatureDemandResponse" type="tns:cancelCosignatureDemandResponse" />
+  <xs:element name="confirmCosign" type="tns:confirmCosign" />
+  <xs:element name="confirmCosignResponse" type="tns:confirmCosignResponse" />
+  <xs:element name="cosign" type="tns:cosign" />
+  <xs:element name="cosignResponse" type="tns:cosignResponse" />
+  <xs:element name="getCosignedFilesFromDemand" type="tns:getCosignedFilesFromDemand" />
+  <xs:element name="getCosignedFilesFromDemandResponse" type="tns:getCosignedFilesFromDemandResponse" />
+  <xs:element name="getInfosFromCosignatureDemand" type="tns:getInfosFromCosignatureDemand" />
+  <xs:element name="getInfosFromCosignatureDemandResponse" type="tns:getInfosFromCosignatureDemandResponse" />
+  <xs:element name="getListCosign" type="tns:getListCosign" />
+  <xs:element name="getListCosignResponse" type="tns:getListCosignResponse" />
+  <xs:element name="initCosign" type="tns:initCosign" />
+  <xs:element name="initCosignResponse" type="tns:initCosignResponse" />
+  <xs:element name="isPDFSignable" type="tns:isPDFSignable" />
+  <xs:element name="isPDFSignableResponse" type="tns:isPDFSignableResponse" />
+  <xs:element name="updateCosigner" type="tns:updateCosigner" />
+  <xs:element name="updateCosignerResponse" type="tns:updateCosignerResponse" />
+  <xs:complexType name="getInfosFromCosignatureDemand">
+    <xs:sequence>
+      <xs:element name="idDemand" type="xs:int" />
+      <xs:element minOccurs="0" name="token" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getInfosFromCosignatureDemandResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:InfosDemandResp" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InfosDemandResp">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="fileInfos" type="tns:FileSignedInfosResp" />
+      <xs:element minOccurs="0" name="dateCreation" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="status" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="cosignerInfos" type="tns:CosignerInfosResp" />
+      <xs:element minOccurs="0" name="initiator" type="tns:Initiator" />
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FileSignedInfosResp">
+    <xs:sequence>
+      <xs:element name="idFile" type="xs:int" />
+      <xs:element minOccurs="0" name="fileName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="cosignersWithStatus" type="tns:CosignersWithStatusResp" />
+      <xs:element minOccurs="0" name="iua" type="xs:string" />
+      <xs:element minOccurs="0" name="pdfPassword" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CosignersWithStatusResp">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="status" type="xs:string" />
+      <xs:element minOccurs="0" name="signatureDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="textToWrite" type="xs:string" />
+      <xs:element minOccurs="0" name="isTextToWrite" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CosignerInfosResp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="firstName" type="xs:string" />
+      <xs:element minOccurs="0" name="lastName" type="xs:string" />
+      <xs:element minOccurs="0" name="mail" type="xs:string" />
+      <xs:element minOccurs="0" name="proofLevel" type="xs:string" />
+      <xs:element minOccurs="0" name="isCosignerCalling" type="xs:boolean" />
+      <xs:element name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="phone" type="xs:string" />
+      <xs:element minOccurs="0" name="token" type="xs:string" />
+      <xs:element minOccurs="0" name="authenticationmode" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Initiator">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+      <xs:element name="email" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="YousignException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelCosignatureDemand">
+    <xs:sequence>
+      <xs:element name="idDemand" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelCosignatureDemandResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCosignedFilesFromDemand">
+    <xs:sequence>
+      <xs:element name="idDemand" type="xs:int" />
+      <xs:element minOccurs="0" name="token" type="xs:string" />
+      <xs:element name="idFile" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCosignedFilesFromDemandResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="tns:FileSignedResp" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FileSignedResp">
+    <xs:sequence>
+      <xs:element xmime:expectedContentTypes="*/*" name="file" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="fileName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateCosigner">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string" />
+      <xs:element name="cosignerInfos" type="tns:CosignerInfosParams" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CosignerInfosParams">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="firstName" type="xs:string" />
+      <xs:element minOccurs="0" name="lastName" type="xs:string" />
+      <xs:element minOccurs="0" name="mail" type="xs:string" />
+      <xs:element minOccurs="0" name="phone" type="xs:string" />
+      <xs:element minOccurs="0" name="proofLevel" type="xs:string" />
+      <xs:element minOccurs="0" name="authenticationMode" type="xs:string" />
+      <xs:element minOccurs="0" name="authenticationValue" type="xs:string" />
+      <xs:element minOccurs="0" name="persoSms" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateCosignerResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="alertCosigners">
+    <xs:sequence>
+      <xs:element name="idDemand" type="xs:int" />
+      <xs:element minOccurs="0" name="mailSubject" type="xs:string" />
+      <xs:element minOccurs="0" name="mail" type="xs:string" />
+      <xs:element minOccurs="0" name="language" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="alertCosignersResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getListCosign">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="search" type="xs:string" />
+      <xs:element name="firstResult" type="xs:int" />
+      <xs:element name="count" type="xs:int" />
+      <xs:element minOccurs="0" name="status" type="xs:string" />
+      <xs:element minOccurs="0" name="dateBegin" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dateEnd" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getListCosignResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="tns:LightInfosDemandResp" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LightInfosDemandResp">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="fileInfos" type="tns:FileSignedInfosResp" />
+      <xs:element minOccurs="0" name="dateCreation" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="status" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="cosignerInfos" type="tns:CosignerLightInfosResp" />
+      <xs:element minOccurs="0" name="initiator" type="tns:Initiator" />
+      <xs:element minOccurs="0" name="cosignatureEvent" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CosignerLightInfosResp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="firstName" type="xs:string" />
+      <xs:element minOccurs="0" name="lastName" type="xs:string" />
+      <xs:element minOccurs="0" name="mail" type="xs:string" />
+      <xs:element name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="confirmCosign">
+    <xs:sequence>
+      <xs:element name="idDemand" type="xs:int" />
+      <xs:element minOccurs="0" name="token" type="xs:string" />
+      <xs:element minOccurs="0" name="cosignerMail" type="xs:string" />
+      <xs:element name="strAuthParam" type="xs:string" />
+      <xs:element xmime:expectedContentTypes="*/*" minOccurs="0" name="signatureImage" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="confirmCosignResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="initCosign">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="lstCosignedFile" type="tns:CosignFileParams" />
+      <xs:element maxOccurs="unbounded" name="lstCosignerInfos" type="tns:CosignerInfosParams" />
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+      <xs:element minOccurs="0" name="initMailSubject" type="xs:string" />
+      <xs:element minOccurs="0" name="initMail" type="xs:string" />
+      <xs:element minOccurs="0" name="endMailSubject" type="xs:string" />
+      <xs:element minOccurs="0" name="endMail" type="xs:string" />
+      <xs:element minOccurs="0" name="language" type="xs:string" />
+      <xs:element minOccurs="0" name="mode" type="xs:string" />
+      <xs:element minOccurs="0" name="archive" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CosignFileParams">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element xmime:expectedContentTypes="*/*" name="content" type="xs:base64Binary" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="visibleOptions" type="tns:VisibleOptionsParams" />
+      <xs:element minOccurs="0" name="pdfPassword" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VisibleOptionsParams">
+    <xs:sequence>
+      <xs:element name="visibleSignaturePage" type="xs:int" />
+      <xs:element name="isVisibleSignature" type="xs:boolean" />
+      <xs:element minOccurs="0" name="visibleRectangleSignature" type="xs:string" />
+      <xs:element minOccurs="0" name="visibleSignatureFieldName" type="xs:string" />
+      <xs:element name="mail" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="initCosignResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:InitCosignResp" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InitCosignResp">
+    <xs:sequence>
+      <xs:element name="idDemand" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="fileInfos" type="tns:FileInfosResp" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tokens" type="tns:TokenInfosResp" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FileInfosResp">
+    <xs:sequence>
+      <xs:element name="idFile" type="xs:int" />
+      <xs:element minOccurs="0" name="fileName" type="xs:string" />
+      <xs:element minOccurs="0" name="sha1" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TokenInfosResp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="token" type="xs:string" />
+      <xs:element minOccurs="0" name="mail" type="xs:string" />
+      <xs:element minOccurs="0" name="phone" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addFile">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string" />
+      <xs:element maxOccurs="unbounded" name="lstCosignedFile" type="tns:CosignFileParams" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addFileResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="tns:FileInfosResp" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isPDFSignable">
+    <xs:sequence>
+      <xs:element name="pdfFile" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="pdfPassword" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isPDFSignableResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cosign">
+    <xs:sequence>
+      <xs:element name="idDemand" type="xs:int" />
+      <xs:element minOccurs="0" name="token" type="xs:string" />
+      <xs:element minOccurs="0" name="cosignerMail" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="lstCosignParameters" type="tns:CosignOptionsParams" />
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CosignOptionsParams">
+    <xs:sequence>
+      <xs:element name="file" type="xs:int" />
+      <xs:element minOccurs="0" name="reason" type="xs:string" />
+      <xs:element minOccurs="0" name="location" type="xs:string" />
+      <xs:element minOccurs="0" name="userPassword" type="xs:string" />
+      <xs:element minOccurs="0" name="ownerPassword" type="xs:string" />
+      <xs:element name="isRefused" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cosignResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addTextToWrite">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string" />
+      <xs:element name="idFile" type="xs:int" />
+      <xs:element name="text" type="xs:string" />
+      <xs:element name="status" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addTextToWriteResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
