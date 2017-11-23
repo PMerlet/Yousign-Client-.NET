@@ -2,9 +2,9 @@
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Web;
-using Yousign_Client_.NET.YousignCosignService;
+using YousignCosignService;
 
-namespace Yousign_Client_.NET
+namespace YousignClientNETCore
 {
     public sealed class CosignClient
     {
@@ -41,20 +41,18 @@ namespace Yousign_Client_.NET
             var binding = GetCosignBindingConfig();
             var endpoint = new EndpointAddress(_cosignUrl);
 
-            using (var client = new CosignWSClient(binding, endpoint))
+            var client = new CosignWSClient(binding, endpoint);
+            using (new OperationContextScope(client.InnerChannel))
             {
-                using (new OperationContextScope(client.InnerChannel))
-                {
-                    var apikeyHeader = MessageHeader.CreateHeader("apikey", string.Empty, _key);
-                    OperationContext.Current.OutgoingMessageHeaders.Add(apikeyHeader);
-                    var usernameHeader = MessageHeader.CreateHeader("username", string.Empty, _username);
-                    OperationContext.Current.OutgoingMessageHeaders.Add(usernameHeader);
-                    var passwordHeader = MessageHeader.CreateHeader("password", string.Empty,
-                        PasswordHelper.GetPasswordHash(_passowrd));
-                    OperationContext.Current.OutgoingMessageHeaders.Add(passwordHeader);
+                var apikeyHeader = MessageHeader.CreateHeader("apikey", string.Empty, _key);
+                OperationContext.Current.OutgoingMessageHeaders.Add(apikeyHeader);
+                var usernameHeader = MessageHeader.CreateHeader("username", string.Empty, _username);
+                OperationContext.Current.OutgoingMessageHeaders.Add(usernameHeader);
+                var passwordHeader = MessageHeader.CreateHeader("password", string.Empty,
+                    PasswordHelper.GetPasswordHash(_passowrd));
+                OperationContext.Current.OutgoingMessageHeaders.Add(passwordHeader);
 
-                    return handler(client);
-                }
+                return handler(client);
             }
         }
 
@@ -79,7 +77,6 @@ namespace Yousign_Client_.NET
         private static BasicHttpBinding GetCosignBindingConfig()
         {
             var binding = new BasicHttpBinding();
-            binding.MessageEncoding = WSMessageEncoding.Mtom;
             binding.MaxReceivedMessageSize = Constants.MaxSize;
             binding.MaxBufferSize = Constants.MaxSize;
             binding.MaxBufferPoolSize = Constants.MaxSize;
